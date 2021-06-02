@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+	
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Scrape - Real Estate Landing Page</title>
+    <link rel="stylesheet" href="assets/style.css" type="text/css">
+
+	<script src="assets/jquery-2.js"></script>
+	<script type="text/javascript">
+		jQuery(window).load(function() {
+			jQuery('#main-nav').on("click", "li a", function() { 
+				if (jQuery(this).siblings('.submenu').length > 0) { 
+					var thisEl = jQuery(this).siblings('.submenu');
+					jQuery('#main-nav .submenu').not(thisEl).slideUp(300);  
+					jQuery(this).siblings('.submenu').slideToggle(300);  
+					return false;
+				}
+			});
+			
+		});
+	</script>
+</head>
+
+<body>
+<div id="page-wrapper">
+	<header>
+    	<div class="header-inner clearfix">
+        
+        	<div id="logo"><img src="assets/logo-inverted.png" alt="Scrape Logo"></div>
+            
+            <div id="menu">
+            	<nav id="main-nav">
+					<ul>
+                    	<li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li>
+                            <a href="#html-structure">HTML Stucture</a>
+                        </li>
+                        <li>
+                            <a href="#background-class">Background Class</a>
+                        </li>
+                        <li>
+                            <a href="#parallax-background">Parallax Background</a>
+                        </li>
+                        <li>
+                            <a href="#owl-carousel">Owl Carousel</a>
+                        </li>
+                        <li>
+                            <a href="#forms">Email Form</a>
+                        </li>
+                        <li>
+                            <a href="#css">CSS</a>
+                        </li>
+                    </ul>
+            	</nav>
+            </div>
+        	
+        </div>
+    </header>
+    
+    <div id="page-body">
+    
+        <div id="page-hero">
+            <h1><strong>Scrape</strong> Documentation</h1>
+            <h4 class="subtitle">HTML Template</h4>
+        </div>
+
+        <section id="about">
+            <div class="section-inner wrapper">
+                <h3 class="section-title"><strong>About</strong></h3>
+                <p>
+                    This is a documentation for Scrape HTML template. It means that it is a static HTML template and it's <strong>not</strong> compatible with WordPress.
+                    You need to have some basic knowledge about HTML, CSS and JavaScript language.
+                </p>
+            </div>
+        </section>
+    
+        <section id="html-structure">
+        	<div class="section-inner wrapper">
+                <h3 class="section-title"><strong>Basic HTML structure</strong></h3>
+
+<pre>&lt;!doctype html&gt;
+&lt;html lang="en-US"&gt;
+&lt;head&gt;
+
+ <span>&lt;!-- CSS, Fonts, Title --&gt;</span>
+ ...
+
+&lt;/head&gt;
+
+&lt;body&gt;
+    <span>&lt;!-- MAIN PAGE WRAPPER --&gt;</span>
+    &lt;div class="page-wrapper"&gt;
+
+        <span>&lt;!-- HEADER & HERO --&gt;</span>
+        &lt;header id="hero"&gt;&lt;/header&gt;
+
+        <span>&lt;!-- MAIN CONTENT --&gt;</span>
+        &lt;div id="content"&gt;
+            &lt;section class="block"&gt;
+                &lt;div class="container"&gt;
+                    &lt;div class="block__wrapper"&gt;
+                        ...
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+        &lt;/div&gt;
+
+        <span>&lt;!-- FOOTER --&gt;</span>
+        &lt;footer id="footer"&gt;&lt;/footer&gt;
+
+    &lt;/div&gt;
+
+  <span>&lt;!-- Javascripts --&gt;</span>
+  ...
+ 
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+            </div>        	
+        </section>
+
+        <section id="background-class">
+            <div class="section-inner wrapper">
+                <h3 class="section-title"><strong>Background Class</strong></h3>
+                <p>
+                    You can set a background image or color for <code>.block</code> or any other relative positioned element.
+                </p>
+
+                <h4>Background Color</h4>
+                <p>
+                    Use <code>data-background-color</code> attribute for color.
+                </p>
+                <pre>
+&lt;section class="<span>block</span>"&gt;
+    ...
+    &lt;div class="<span>background</span>" <span>data-background-color="#fff"</span>&gt;&lt;/div&gt;
+&lt;/section&gt;
+</pre>
+                <h4>Background Image</h4>
+                <pre>
+&lt;section class="<span>block</span>"&gt;
+    ...
+    &lt;div class="<span>background</span>"&gt;
+        &lt;div class="<span>background-image</span>"&gt;
+            &lt;img src="<span>assets/img/background-image.jpg</span>" alt=""&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</pre>
+                <p>
+                    <span class="tip-important">Important:</span> If your background image is dark, use <code>has-dark-background</code> class
+                </p>
+            </div>
+        </section>
+
+        <section id="parallax-background">
+            <div class="section-inner wrapper">
+                <h3 class="section-title"><strong>Parallax Background</strong></h3>
+                <p>
+                    To use parallax effect on your background image it is recommended to use image with at least 2000px width and
+                    with high that will fill desired section. Than use <code>data-parallax-"scroll"</code> attribute
+                    and <code>data-parallax-speed="1-5"</code>. Then child element has to have <code>parallax-element</code> class.
+                </p>
+
+                <p>Then on every page where with the map find this code at the bottom of the page:</p>
+<pre>
+&lt;div class="background-wrapper" <span>data-parallax="scroll"</span> <span>data-parallax-speed="3"</span> data-background-color="#f1f1f1""&gt;
+    &lt;div class="background--image opacity-10 <span>parallax-element</span>"&gt;
+        &lt;img src="assets/img/slide-02.jpg" alt=""&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+            </div>
+        </section>
+
+        <section id="owl-carousel">
+            <div class="section-inner wrapper">
+
+                <h3 class="section-title"><strong>Owl Carousel</strong></h3>
+
+                <p>
+                    You can create a carousel without editing a JavaScript. All you need to is to set <code>data-</code> parameters. These data-attributes you can set:
+                </p>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-items</code>
+                        <p>number of displayed items. Default 1</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-nav</code>
+                        <p>display navigation arrows. Default 0</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-dots</code>
+                        <p>display navigation dots. Default 0</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-center</code>
+                        <p>center the slide. Default 0</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-loop </code>
+                        <p>loop the carousel. Default 0</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-margin</code>
+                        <p>margin between slides. Default 0. (If doesn't work, set margin via CSS)</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-auto-width</code>
+                        <p>dynamic width based on slide width. Default 0</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-nav-container</code>
+                        <p>container for navigation. Default 0</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-autoplay</code>
+                        <p>auto play slides. Default 0</p>
+                    </div>
+                </div>
+
+                <div class="column-section clearfix">
+                    <div class="column one-third">
+                        <code>data-owl-fadeout</code>
+                        <p> fade animation between slides. Default 0</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="forms">
+            <div class="section-inner wrapper">
+                <h3 class="section-title"><strong>Email Form</strong></h3>
+                <p>
+                    First of all, you need to edit your incoming email address. Open <code>assets/php/email.php</code> and change this email address:
+                </p>
+                <pre>
+$to = '<span>hello@example.com</span>';
+</pre>
+
+                <p>
+                    Then these variables are passed to PHP file located at <code>assets/php/email.php</code>:
+                </p>
+                <p>
+                    <code>$_POST['name']</code>
+                    <br>
+                    <code>$_POST['subject']</code>
+                    <br>
+                    <code>$_POST['email']</code>
+                    <br>
+                    <code>$_POST['phone']</code>
+                    <br>
+                    <code>$_POST['message']</code>
+                </p>
+                <p>
+                    These are default, but you can add your own. For example we want new input for the Newsletter.
+                    Here is the <code>input</code> field which we want to collect. We have to named it:
+                </p>
+                <pre>
+&lt;input name="<span>newsletter_email</span>" type="email"&gt;
+</pre>
+                <p>
+                    Now open <code>assets/php/email.php</code> and check the code:
+                </p>
+                <pre>
+if( isset($_POST['<span>newsletter_email</span>']) ){
+    $email = $_POST['<span>newsletter_email</span>'];
+
+    $body .= "";
+    $body .= "Email: ";
+    $body .= $email;
+    $body .= "\n\n";
+}
+</pre>
+                <p>
+                    Variable <code>newsletter_email</code> is passed via $_POST and sent to your email address.
+                </p>
+            </div>
+        </section>
+
+        <section id="css">
+            <div class="section-inner wrapper">
+                <h3 class="section-title"><strong>CSS</strong></h3>
+                <p><code>.has-dark-background</code> use when you have element with a dark <a href="#background-class">background</a>.</p>
+                <p><code>.block</code> gives an element padding top and padding bottom</p>
+                <p><code>.box</code> gives an element padding, white background and shadow</p>
+                <p><code>.center</code> centers a text or an inline element</p>
+                <p><code>.no-shadow</code> disables shadow on element</p>
+                <p><code>.height-100px</code> give element 100px height</p>
+                <p><code>.height-150px</code></p>
+                <p><code>.height-200px</code></p>
+                <p><code>.height-250px</code></p>
+                <p><code>.height-300px</code></p>
+                <p><code>.height-350px</code></p>
+                <p><code>.height-400px</code></p>
+                <p><code>.height-450px</code></p>
+                <p><code>.height-500px</code></p>
+                <p><code>.opacity-5</code> opacity 0.05</p>
+                <p><code>.opacity-10</code> opacity 0.1</p>
+                <p><code>.opacity-20</code></p>
+                <p><code>.opacity-30</code></p>
+                <p><code>.opacity-40</code></p>
+                <p><code>.opacity-50</code> opacity 0.5</p>
+                <p><code>.opacity-60</code></p>
+                <p><code>.opacity-70</code></p>
+                <p><code>.opacity-80</code></p>
+                <p><code>.opacity-90</code> opacity 0.9</p>
+                <p><code>.text-align-right</code></p>
+                <p><code>.text-align-left</code></p>
+                <p><code>columns-4</code> set 4 columns dor <code>ul, ol, dd</code> elements</p>
+                <p><code>columns-3</code> set 3 columns dor <code>ul, ol, dd</code> elements</p>
+                <p><code>columns-2</code> set 2 columns dor <code>ul, ol, dd</code> elements</p>
+            </div>
+        </section>
+
+    </div>
+
+</div><!-- #page -->    
+
+</body>
+</html>
